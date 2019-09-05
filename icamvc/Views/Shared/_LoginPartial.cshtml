@@ -1,0 +1,83 @@
+@using Microsoft.AspNetCore.Identity
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
+
+
+@if (SignInManager.IsSignedIn(User))
+{
+    <div class="bg-light border-right" id="sidebar-wrapper">
+        <div class="sidebar-heading"><img src="~/images/MMALOGISTICS1.png" width="60px" height="60px"/> </div>
+        <div class="list-group list-group-flush">
+            <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Routes" asp-action="Index">Rutter</a>
+            @if (User.IsInRole("Transportledare") || User.IsInRole("SuperAdmin"))
+            {
+                <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Drivers" asp-action="Index">Chauff&ouml;rer</a>
+            }
+            <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Home" asp-action="About">Om</a>
+            <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Home" asp-action="Contact">Kontakta oss</a>
+
+            <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Routes", new { area = "" })" method="post" id="logoutForm">
+                @if (User.IsInRole("SuperAdmin"))
+                {
+                    <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                }
+                <a class="list-group-item list-group-item-action bg-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Manage account</a>
+                <br />
+                <button type="submit">Logga ut</button>
+            </form>
+        </div>
+    </div>
+
+
+
+    @*Old menu dropdown*@
+    @*<div class="d-none d-xs-block d-sm-block d-md-none">
+            <button>Menu&#9776;</button>
+            <div>
+                <a asp-area="" asp-controller="Routes" asp-action="Index">Rutter</a>
+                @if (User.IsInRole("Transportledare") || User.IsInRole("SuperAdmin"))
+                {
+                    <a asp-area="" asp-controller="Drivers" asp-action="Index">Chauff&ouml;rer</a>
+                }
+                <a asp-area="" asp-controller="Home" asp-action="About">Om</a>
+                <a asp-area="" asp-controller="Home" asp-action="Contact">Kontakta oss</a>
+
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Routes", new { area = "" })" method="post" id="logoutForm">
+                    @if (User.IsInRole("SuperAdmin"))
+                    {
+                        <a asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                    }
+                    <a asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Manage account</a>
+                    <br />
+                    <button type="submit" class="btn btn-link navbar-btn navbar-link">Logga ut</button>
+                </form>
+            </div>
+        </div>*@
+
+
+    @*old sidebar------ *@
+    @*<div>
+            <div>
+                <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Routes" asp-action="Index">Rutter</a>
+                @if (User.IsInRole("Transportledare") || User.IsInRole("SuperAdmin"))
+                {
+                    <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Drivers" asp-action="Index">Chauff&ouml;rer</a>
+                }
+                <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Home" asp-action="About">Om</a>
+                <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Home" asp-action="Contact">Kontakta oss</a>
+
+                <form asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Routes", new { area = "" })" method="post" id="logoutForm">
+                    @if (User.IsInRole("SuperAdmin"))
+                    {
+                        <a class="list-group-item list-group-item-action bg-light" asp-area="" asp-controller="Admin" asp-action="Index">Admin</a>
+                    }
+                    <a class="list-group-item list-group-item-action bg-light" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Manage account</a>
+                    <br />
+                    <button type="submit">Logga ut</button>
+                </form>
+            </div>
+        </div>*@
+
+}
+

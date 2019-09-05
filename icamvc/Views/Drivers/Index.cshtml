@@ -1,0 +1,57 @@
+﻿@model IEnumerable<ICAMVC.Models.Driver>
+
+@{
+    ViewData["Title"] = "Index";
+}
+    <div id="bodyCont">
+
+
+        <h2>Chaufförer</h2>
+
+        <button id="mapButton"><a id="BLink" asp-action="Create">Skapa ny chaufför</a></button>
+
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Namn
+                    </th>
+                    <th>
+                        Ändra Förare
+                    </th>
+                    <th>
+                        Detaljer
+                    </th>
+                    <th>
+                        Radera Förare
+                    </th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var item in Model)
+                {
+                    <tr>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.BadgeId)
+                        </td>
+                        <td>
+                            @Html.DisplayFor(modelItem => item.Name)
+                        </td>
+                        <td>
+                            <a asp-action="Edit" asp-route-id="@item.Id">Ändra</a>
+                        </td>
+                        <td>
+                            <a asp-action="Details" asp-route-id="@item.Id">Detaljer</a>
+                        </td>
+                        <td>
+                            <a asp-action="Delete" asp-route-id="@item.Id">Radera</a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+
+    </div>

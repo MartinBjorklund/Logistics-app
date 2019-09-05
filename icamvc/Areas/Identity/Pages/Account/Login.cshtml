@@ -1,0 +1,65 @@
+﻿@page
+@model LoginModel
+@{ 
+    Layout = null;
+}
+<link rel="stylesheet" href="~/css/LogInCss/main.css"/>
+<link rel="stylesheet" href="~/css/LogInCss/util.css"/>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+
+
+<div class="limiter">
+    <div class="container-login100">
+        <div class="wrap-login100">
+            <form class="login100-form validate-form" method="post">
+                <span class="login100-form-logo">
+                    <img src="~/images/MMALOGISTICS1.png">
+                </span>
+
+                @*<span class="login100-form-title p-b-21 p-t-29">
+            Log in
+        </span>*@
+
+                <div class="wrap-input100 validate-input" data-validate="Enter username">
+                    <label asp-for="Input.Email" style="color: white"></label>
+                    <input asp-for="Input.Email" class="form-control" />
+                    <span asp-validation-for="Input.Email" class="text-danger"></span>
+                </div>
+
+                <div class="wrap-input100 validate-input" data-validate="Enter password">
+                    <label asp-for="Input.Password" style="color: white">Lösenord</label>
+                    <input asp-for="Input.Password" class="form-control" />
+                    <span asp-validation-for="Input.Password" class="text-danger"></span>
+                </div>
+
+                <div class="Checkcontainer">
+                    <input type="checkbox" checked="checked">
+                    <label class="checkmark" style="color: white">
+                        Kom ihåg mig
+                    </label>
+                </div>
+
+                <br />
+
+
+                <button id="button1" type="submit" value="Login">Logga in</button>
+
+
+
+                    <div class="text-center p-t-40">
+                        <a class="txt1" href="#" style="color: white">
+                            Glömt lösenord?
+                        </a>
+                    </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+}

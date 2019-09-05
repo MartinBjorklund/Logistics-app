@@ -1,0 +1,33 @@
+﻿@model ICAMVC.Models.Driver
+
+@{
+    ViewData["Title"] = "Details";
+}
+    <div id="bodyCont">
+        <h2>Detaljer</h2>
+
+        <div>
+            <h4>Chaufför</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.BadgeId)*@
+                    ID
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.BadgeId)
+                </dd>
+                <dt>
+                    @*@Html.DisplayNameFor(model => model.Name)*@
+                    Namn
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Name)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Id">Ändra</a> |
+            <a asp-action="Index">Tillbaka till listan</a>
+        </div>
+    </div>

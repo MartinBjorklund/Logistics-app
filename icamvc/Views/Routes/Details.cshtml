@@ -1,0 +1,67 @@
+﻿@model ICAMVC.Models.Route
+
+@{
+    ViewData["Title"] = "Details";
+}
+    <div id="bodyCont">
+        <h2>Detaljer</h2>
+
+        <div>
+            <h4>Rutt</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Rutt
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.RouteName)
+                </dd>
+                <dt>
+                    Starttid
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StartTime)
+                </dd>
+                <dt>
+                    Sluttid
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StopTime)
+                </dd>
+                <dt>
+                    Distans
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Distance)
+                </dd>
+                <dt>
+                    Antal kunder
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NumberOfCustomers)
+                </dd>
+                <dt>
+                    SAKNAS-CHAFFÖR
+                </dt>
+                <dd>
+                    Chaufför
+                </dd>
+                <dt>
+                    Bil lastad
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TruckLoaded)
+                </dd>
+                <dt>
+                    Antal kolli
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NumberOfParcels)
+                </dd>
+            </dl>
+        </div>
+        <div>
+            <a asp-action="Edit" asp-route-id="@Model.Id">Ändra</a> |
+            <a asp-action="Index">Tillbaka till listan</a>
+        </div>
+    </div>

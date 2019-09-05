@@ -1,0 +1,16 @@
+Som <roll> vill jag <mål/önskan/händelse> för att <syfte>
+Som Lageranvändare vill jag kunna se turer på dagen och endast redigera lager-delen
+Som Transportledare vill jag kunna se turer på dagen och endast redigera transport-delen
+Som SuperAdmin vill jag kunna se allting och redigera allting
+Som vanlig användare vill jag kunna se allting (i realtid)
+Som icke-användare så kommer jag inte komma åt någonting utan att logga in
+Som användare vill jag att informationen loggas till en sql-databas
+
+Analys-
+Jämföra
+Kolla beroende på förare
+Lättare överblock
+statistik
+Realtidgraf
+
+(AI)

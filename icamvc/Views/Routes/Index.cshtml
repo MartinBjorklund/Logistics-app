@@ -1,0 +1,123 @@
+﻿@model RouteViewModel
+@{
+    ViewData["Title"] = "Index";
+}
+<script src="~/js/AngularJS.js"></script>
+
+<div id="bodyCont">
+
+    <div id="page-content-wrapper">
+        <div class="container-fluid">
+            <h2>Rutter</h2>
+
+            <div ng-app="myApp" ng-controller="dataController">
+               
+                <button id="updateButton" ng-click="refreshData()">Uppdatera manuellt</button>
+                <hr />
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th style="text-align:center">Rutt</th>
+                            <th style="text-align:center">Starttid</th>
+                            <th style="text-align:center">Sluttid</th>
+                            <th style="text-align:center">Distans</th>
+                            <th style="text-align:center">Antal kunder</th>
+                            <th style="text-align:center">Chaufför</th>
+                            <th style="text-align:center">Bil lastad</th>
+                            <th style="text-align:center">Antal kolli</th>
+
+                            @if (User.IsInRole("Transportledare"))
+                        {
+                            <td>Skicka rutt</td>
+                            <th>Ändra</th>
+                        }
+                            @if (User.IsInRole("SuperAdmin"))
+                        {
+                            <td>Skicka rutt</td>
+                            <th>Ändra</th>
+                            <th>Radera</th>
+                        }
+                        </tr>
+                    </thead>
+                    <tr ng-repeat="x in names">
+                        <td style="text-align:center"><a href="Routes/Maps/{{x.id}}">{{ x.routeName }}</a></td>
+                        <td style="text-align:center">{{ x.startTime }}</td>
+                        <td style="text-align:center">{{ x.stopTime }}</td>
+                        <td style="text-align:center">{{ x.distance }}</td>
+                        <td style="text-align:center">{{ x.numberOfCustomers }}</td>
+                        <td style="text-align:center">{{ x.driver.name }}</td>
+                        @if (User.IsInRole("SuperAdmin") || User.IsInRole("Lagerarbetare"))
+                    {
+                        <td style="text-align:center"><input type="checkbox" ng-change="updateBooleans({{x.id}}, this.x)" ng-model="x.truckLoaded"></td>
+                    }
+                    else
+                    {
+                        <td style="text-align:center"><input type="checkbox" disabled="disabled" ng-model="x.truckLoaded"></td>
+
+
+
+
+                          }
+
+                        @if (User.IsInRole("SuperAdmin") || User.IsInRole("Lagerarbetare"))
+                    {
+                        <td style="text-align:center"><input type="number" ng-change="updateBooleans({{x.id}}, this.x)" ng-model="x.numberOfParcels" min="0" max="1000"></td>
+                    }
+                    else
+                    {
+                        <td style="text-align:center"><input type="number" disabled="disabled" ng-model="x.numberOfParcels"></td>
+                    }
+
+
+
+                        @if (User.IsInRole("Transportledare"))
+                    {
+                        <td>
+                            <button id="mapButton"><a id="BLink" href="Routes/SendToDriver/{{x.id}}">Skicka</a></button>
+                        </td>
+                        <td>
+                            <a href="Routes/Edit/{{x.id}}">Ändra</a>
+
+                        </td>
+                    }
+                        @if (User.IsInRole("SuperAdmin"))
+                    {
+                        <td>
+                            <button id="mapButton"><a id="BLink" href="Routes/SendToDriver/{{x.id}}">Skicka</a></button>
+                        </td>
+                        <td>
+                            <a href="Routes/Edit/{{x.id}}">Ändra</a>
+                        </td>
+                        <td>
+                            <a href="Routes/Delete/{{x.id}}">Radera</a>
+                        </td>
+                    }
+                    </tr>
+
+                </table>
+            </div>
+        </div>
+    </div>
+</div>
+
+@section Scripts{
+    <script src="~/lib/@@aspnet/signalr/dist/browser/signalr.js"></script>
+    <script src="~/js/SignalR.js"></script>
+    <script>
+
+
+        async function updateDriver(id) {
+            let DriverName = document.getElementById('DriverName_' + id).value;
+
+            let response = await fetch('https://mvcrouteapp.azurewebsites.net/Routes/EditDriver/' + id + "?Name=" + DriverName, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                }
+            });
+
+            console.log(response);
+        }
+    </script>
+
+}

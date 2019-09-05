@@ -1,0 +1,71 @@
+﻿@model ICAMVC.Models.Route
+
+@{
+    ViewData["Title"] = "Delete";
+}
+    <div id="bodyCont">
+        <h2>Radera</h2>
+
+        <h3>Är du säker på att du vill radera denna rutt?</h3>
+        <div>
+            <h4>Rutt</h4>
+            <hr />
+            <dl class="dl-horizontal">
+                <dt>
+                    Ruttnamn
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.RouteName)
+                </dd>
+                <dt>
+                    Starttid
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StartTime)
+                </dd>
+                <dt>
+                    Sluttid
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.StopTime)
+                </dd>
+                <dt>
+                    Distans
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.Distance)
+
+                </dd>
+                <dt>
+                    Antal kunder
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NumberOfCustomers)
+                </dd>
+                <dt>
+                    SAKNAS-CHAFFÖR
+                </dt>
+                <dd>
+                    Chaufför
+                </dd>
+                <dt>
+                    Bil lastad
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.TruckLoaded)
+                </dd>
+                <dt>
+                    Antal kolli
+                </dt>
+                <dd>
+                    @Html.DisplayFor(model => model.NumberOfParcels)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="hidden" asp-for="Id" />
+                <input type="submit" value="Radera" class="btn btn-default" /> |
+                <a asp-action="Index">Tillbaka till listan</a>
+            </form>
+        </div>
+    </div>

@@ -1,0 +1,37 @@
+Etapp 1
+
+En MVC Applikation med en vy (1) som skyddas av inloggningsbegäran
+
+Vyn renderas på morgonen utifrån API-rop till SchemaAssistent, Ruttningsassistent
+
+Vyn har olika redigeringsmöjligheter utifrån vilken nivå användaren är som loggar in, t.ex en lagermedarbetare kan endast redigera lagerinformationen
+
+Vyn uppdateras direkt vid redigering med tekniken SignalR
+
+Vyn sparas löpande till en sql-databas
+	
+Etapp 2
+
+Utöka med en till vy (2) som innehåller burndown-chart utifrån hur många artiklar som lagerpersonalen har kvar på dagen utifrån tid
+
+Informationen om antal artiklar hämtas från en sql-databas alt. webscraping
+
+Vyn sparas i slutet av dagen till en sql-databas
+
+Etapp 3
+
+Vy 1's chafförer tilldelas automatiskt till ruttningen utifrån schema(tidigast-senast start) men även med möjlighet till tolerans från historik(kg, antal kunder i veckan)
+
+
+Etapp 4
+
+Analysverktyg (Vy 1) - hur förarna har haft det under vecka,
+ta ut statistik, analysmaterial,
+Jämföra,
+Kolla beroende på förare,
+Lättare överblick
+
+
+Etapp 5
+
+AI som genererar en exempel burndown chart utifrån första datan på dagen (vy 2) (ML.net)

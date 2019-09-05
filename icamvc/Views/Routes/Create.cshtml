@@ -1,0 +1,67 @@
+﻿@model ICAMVC.Models.Route
+
+@{
+    ViewData["Title"] = "Create";
+}
+    <div id="bodyCont">
+        <h2>Skapa rutt</h2>
+
+        <h4>Rutt</h4>
+        <hr />
+        <div class="row">
+            <div class="col-md-4">
+                <form asp-action="Create">
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label asp-for="RouteName">Ruttnamn<class ="control-label"></label>
+                        <input asp-for="RouteName" class="form-control" />
+                        <span asp-validation-for="RouteName" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StartTime">Starttid<class ="control-label"></label>
+                        <input asp-for="StartTime" class="form-control" />
+                        <span asp-validation-for="StartTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="StopTime">Sluttid<class ="control-label"></label>
+                        <input asp-for="StopTime" class="form-control" />
+                        <span asp-validation-for="StopTime" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="Distance">Distans (km)<class ="control-label"></label>
+                        <input asp-for="Distance" class="form-control" />
+                        <span asp-validation-for="Distance" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NumberOfCustomers">Antal kunder<class ="control-label"></label>
+                        <input asp-for="NumberOfCustomers" class="form-control" />
+                        <span asp-validation-for="NumberOfCustomers" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <div class="checkbox">
+                            <label>
+                                <input asp-for="TruckLoaded" /> @*@Html.DisplayNameFor(model => model.AllDone)*@
+                                Bil lastad
+                            </label>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label asp-for="NumberOfParcels">Antal kolli<class ="control-label"></label>
+                        <input asp-for="NumberOfParcels" class="form-control" />
+                        <span asp-validation-for="NumberOfParcels" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" value="Skapa" class="btn btn-default" />
+                    </div>
+                </form>
+            </div>
+        </div>
+
+        <div>
+            <a asp-action="Index">Tillbaka till listan</a>
+        </div>
+    </div>
+
+        @section Scripts {
+            @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+        }
